@@ -1,0 +1,11 @@
+# Gemfile
+source "http://rubygems.org"
+gem "bundler"
+gem "sinatra"
+gem "heroku"
+gem "haml"
+gem "dm-core"
+gem "dm-timestamps"
+gem "dm-migrations"
+gem "dm-aggregates"
+gem "dm-postgres-adapter"

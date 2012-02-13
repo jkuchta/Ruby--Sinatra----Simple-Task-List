@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  
+<script>
+  $(document).ready(function() {
+    $("#taskDate").datepicker();
+  });
+</script>
+
+<!-- Javascript goes in the document HEAD -->
+<script type="text/javascript">
+function altRows(id){
+	if(document.getElementsByTagName){  
+		
+		var table = document.getElementById(id);  
+		var rows = table.getElementsByTagName("tr"); 
+		 
+		for(i = 0; i < rows.length; i++){          
+			if(i % 2 == 0){
+				rows[i].className = "evenrowcolor";
+			}else{
+				rows[i].className = "oddrowcolor";
+			}      
+		}
+	}
+}
+
+window.onload=function(){
+	altRows('alternatecolor');
+}
+</script>
+<title>Simple Task List</title>
+</head>
+
+<body>
+
+<div id="Header">
+  <h1>Simple Task List Example</h1>
+</div>
+
+<div align="center" id="FormContainer">
+  <h2 align="left">
+    Add, remove, or complete tasks. Tasks are ordered by priority which can be adjusted by using the up and down arrows next to the task. All           fields are currently optional.
+    </h2>
+  <form action="task" method="post">
+    
+    <div align="center" class="field">
+      <label for="taskType">Task Type</label>
+      <select name="taskType">
+        <option value="">Choose a Task</option>
+        <opion value="Eat">Eat</option>
+          <option value="Listen to Music">Listen to Music</option>
+          <option value="Sleep">Sleep</option>
+          <option value="Watch Movie">Watch Movie</option>
+        </select>
+    </div>
+  
+    <div align="center" class="field">
+      <label for="taskName" maxlength="40">Task Name</label>
+      <input type="text" name="taskName">
+    </div>
+  
+    <div align="center" class="field">
+      <label for="taskDate">Due Date</label>
+      <input type="text" name="taskDate" id="taskDate">
+    </div>
+  
+    <div align="center" class="field">
+      <label for="submit">&nbsp;</label>
+      <input type="submit" id="submit" value="Add Task">
+    </div>
+    
+  </form>
+</div>
+
+<table align="center" border="0" width="700" cellpadding="0" cellspacing="10" class="altrowstable" id="alternatecolor">
+  <tr>
+    <th>Task Type</th>
+    <th>Task Name</th>
+    <th>Due Date</th>
+    <th>Task Status</th>
+    <th>Task Options</th>
+  </tr>
+  <% @tasks.each_with_index do |task,i| %>
+  <tr>
+    <td><%= task.type %></td>
+    <td><%= task.name %></td>
+    <td><%= task.dueDate %></td>
+    <td><%= task.status %></td>
+    <td>
+      <a href="/complete/<%= task.id %>"><img src="/images/check.png" alt="Complete"></img></a>
+      <a href="/delete/<%= task.id %>"><img src="/images/cross.png" alt="Delete"></img></a>
+      <a href="/down/<%= task.id %>"><img src="/images/down.png" alt="Decrease priority"></img></a>
+      <a href="/up/<%= task.id %>"><img src="/images/up.png" alt="Increase priority"></img></a>  
+    </td>
+  </tr>
+<% end %>
+</table>
+</body>
+</html>

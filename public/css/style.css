@@ -1,0 +1,89 @@
+body {
+	margin:0px;
+	padding:0px;
+	font-family:verdana, arial, helvetica, sans-serif;
+	color:#333;
+	}
+h1 {
+	font:24px verdana, arial, helvetica, sans-serif;
+	font-weight: bold;
+	margin:0px 10px 16px 10px;
+	padding:0px;
+	}
+	
+h2 {
+	font:16px verdana, arial, helvetica, sans-serif;
+	margin:10px 10px 16px 10px;
+	padding:0px;
+	}
+	
+label {
+	display: block;
+	font:13px verdana, arial, helvetica, sans-serif;
+	text-align: center;
+	font-weight: bold;
+	padding: 0px 0px 10px 0px;
+	}
+
+p {
+	font:11px verdana, arial, helvetica, sans-serif;
+	margin:0px 0px 16px 0px;
+	padding:0px;
+	}
+	
+td {
+	text-align: center;
+}
+
+#Header {
+	margin:50px 0px 25px 0px;
+	padding:17px 0px 0px 20px;
+	height:33px;
+	border-style:solid;
+	border-color:black;
+	border-width:1px 0px;
+	line-height:11px;
+	background-color:#eee;
+}
+
+#FormContainer{
+	border-style:solid;
+	border-color:black;
+	border-width:1px;
+	background-color:#eee;
+	overflow:auto;
+	margin: 0 29.5% 25px 29.5%;
+}
+	
+.field{
+	float: left;
+	padding: 8px;
+}
+
+/* Table formatting for alternating rows */
+table.altrowstable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #a9c6c9;
+	border-collapse: collapse;
+}
+table.altrowstable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.altrowstable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+.oddrowcolor{
+	background-color:#d4e3e5;
+}
+.evenrowcolor{
+	background-color:#c3dde0;
+}
