@@ -10,7 +10,6 @@ DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/mydataba
 
 class Task
   include DataMapper::Resource
-  
   property :id,       Serial
   property :name,     String
   property :dueDate,  String
