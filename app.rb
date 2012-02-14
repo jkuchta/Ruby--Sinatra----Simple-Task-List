@@ -9,7 +9,6 @@ require 'dm-aggregates'
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/mydatabase.db")
 
 class Task
-  
   include DataMapper::Resource
   
   property :id,       Serial
@@ -18,17 +17,17 @@ class Task
   property :status,   String
   property :type,     String
   property :priority, Integer
-  
 end
 
 DataMapper.auto_upgrade!
 
-
+#list all of the tasks
 get '/' do
   @tasks = Task.all(:order => [:priority.desc])
   erb :index
 end
 
+#add a new task and set a priority value
 post '/task' do
   @task = Task.new()
   @task.type = params[:taskType]
@@ -44,9 +43,9 @@ post '/task' do
   if @task.save
     redirect('/')
   end
-  
 end
 
+#mark a task as complete
 get '/complete/:id' do
   task = Task.get(params[:id])
   unless task.nil?
@@ -57,6 +56,7 @@ get '/complete/:id' do
   end
 end
 
+#delete a task
 get '/delete/:id' do
   task = Task.get(params[:id])
   unless task.nil?
@@ -65,6 +65,7 @@ get '/delete/:id' do
   redirect('/')
 end
 
+#decrease a tasks priority
 get '/down/:id' do
   downPriorities = nil
   task = Task.get(params[:id])
@@ -82,7 +83,7 @@ get '/down/:id' do
   end
 end
 
-
+#increase a tasks priority
 get '/up/:id' do
   upPriorities = nil
   task = Task.get(params[:id])
